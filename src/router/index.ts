@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import NProgress from 'nprogress'; // progress bar
+import NProgress from 'nprogress'; // 进度条progress bar
 import 'nprogress/nprogress.css';
 
 import Login from './modules/login';

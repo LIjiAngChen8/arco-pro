@@ -15,10 +15,10 @@ setupMock({
     Mock.mock(new RegExp('/api/user/info'), () => {
       if (isLogin()) {
         return successResponseWrap({
-          name: '王立群',
+          name: '管理员',
           avatar:
-            '//lf1-xgcdn-tos.pstatp.com/obj/vcloud/vadmin/start.8e0e4855ee346a46ccff8ff3e24db27b.png',
-          email: 'wangliqun@email.com',
+            'https://vkceyugu.cdn.bspapp.com/VKCEYUGU-efbfcb02-017d-4e68-a2c7-f92e33192dbb/be9559c4-fa98-423d-a85e-6ca738bc2f7c.jpg',
+          email: 'SpaceCode@email.com',
           job: 'frontend',
           jobName: '前端艺术家',
           organization: 'Frontend',
@@ -27,7 +27,7 @@ setupMock({
           locationName: '北京',
           introduction: '人潇洒，性温存',
           personalWebsite: 'https://www.arco.design',
-          phone: '150****0000',
+          phone: '17605902971',
           registrationDate: '2013-05-10 12:10:00',
           accountId: '15012312300',
           certification: 1,

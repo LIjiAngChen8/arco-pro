@@ -131,6 +131,7 @@
         :loading="loading"
         :pagination="pagination"
         :data="renderData"
+        :row-selection="rowSelection"
         :bordered="false"
         @pageChange="onPageChange"
       >
@@ -212,6 +213,16 @@
             <template #cell>
               <a-button type="text" size="small">
                 {{ $t('searchTable.columns.operations.view') }}
+              </a-button>
+            </template>
+          </a-table-column>
+          <a-table-column
+            :title="$t('searchTable.columns.operations')"
+            data-index="operations"
+          >
+            <template #cell>
+              <a-button type="text" size="small" status="danger">
+                {{ $t('searchTable.columns.operations.del') }}
               </a-button>
             </template>
           </a-table-column>

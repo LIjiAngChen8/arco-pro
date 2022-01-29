@@ -31,4 +31,5 @@ export default {
   'searchTable.columns.status': '状态',
   'searchTable.columns.operations': '操作',
   'searchTable.columns.operations.view': '查看',
+  'searchTable.columns.operations.del': '删除',
 };

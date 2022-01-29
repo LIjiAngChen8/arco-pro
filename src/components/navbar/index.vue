@@ -3,26 +3,29 @@
     <div class="left-side">
       <a-space>
         <img
+          v-if="theme === 'light'"
           alt="logo"
-          src="//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/dfdba5317c0c20ce20e64fac803d52bc.svg~tplv-49unhts6dw-image.image"
+          src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-efbfcb02-017d-4e68-a2c7-f92e33192dbb/30a6909a-b243-40f3-8896-5f0edd10887b.png"
+        />
+        <img
+          v-else
+          alt="logo"
+          src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-efbfcb02-017d-4e68-a2c7-f92e33192dbb/9a82fe81-6fbc-4b3f-a559-5f4fd8f5013a.png"
         />
         <a-typography-title
           :style="{ margin: 0, fontSize: '18px' }"
           :heading="5"
         >
-          Arco Pro
+          政务一体化协同办公平台
         </a-typography-title>
       </a-space>
     </div>
     <ul class="right-side">
       <li>
-        <a-tooltip :content="$t('settings.search')">
-          <a-button class="nav-btn" type="outline" :shape="'circle'">
-            <template #icon>
-              <icon-search />
-            </template>
-          </a-button>
-        </a-tooltip>
+        <a-input-search
+          :style="{ width: '200px', borderRadius: '20px' }"
+          placeholder="业务配置"
+        />
       </li>
       <li>
         <a-tooltip :content="$t('settings.language')">
@@ -238,15 +241,21 @@ export default defineComponent({
   display: flex;
   align-items: center;
   padding-left: 20px;
+
+  img {
+    width: 77px;
+  }
 }
 
 .right-side {
   display: flex;
   padding-right: 20px;
   list-style: none;
+
   :deep(.locale-select) {
     border-radius: 20px;
   }
+
   li {
     display: flex;
     align-items: center;
@@ -257,16 +266,19 @@ export default defineComponent({
     color: var(--color-text-1);
     text-decoration: none;
   }
+
   .nav-btn {
-    border-color: rgb(var(--gray-2));
     color: rgb(var(--gray-8));
     font-size: 16px;
+    border-color: rgb(var(--gray-2));
   }
+
   .trigger-btn,
   .ref-btn {
     position: absolute;
     bottom: 14px;
   }
+
   .trigger-btn {
     margin-left: 14px;
   }

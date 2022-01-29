@@ -1,5 +1,5 @@
 <template>
-  <a-layout-footer class="footer">Arco Pro</a-layout-footer>
+  <a-layout-footer class="footer">@正孚软件有限公司</a-layout-footer>
 </template>
 
 <script lang="ts">

@@ -22,13 +22,13 @@ export default defineComponent({
   setup() {
     const carouselItem = [
       {
-        slogan: '开箱即用的高质量模板',
-        subSlogan: '丰富的的页面模板，覆盖大多数典型业务场景',
+        slogan: '正孚OA办公3.0',
+        subSlogan: '更高效的管理',
         image: bannerImage,
       },
       {
-        slogan: '内置了常见问题的解决方案',
-        subSlogan: '国际化，路由配置，状态管理应有尽有',
+        slogan: '内置方案',
+        subSlogan: '页面配置，状态管理应有尽有',
         image: bannerImage,
       },
       {

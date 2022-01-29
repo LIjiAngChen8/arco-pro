@@ -26,7 +26,7 @@ import localeUserInfo from '@/views/user/info/locale/zh-CN';
 import localeUserSetting from '@/views/user/setting/locale/zh-CN';
 
 export default {
-  'menu.dashboard': '仪表盘',
+  'menu.dashboard': '系统配置',
   'menu.list': '列表页',
   'menu.result': '结果页',
   'menu.exception': '异常页',

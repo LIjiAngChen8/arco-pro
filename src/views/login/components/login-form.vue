@@ -1,7 +1,8 @@
 <template>
   <div class="login-form-wrapper">
-    <div class="login-form-title">登录 Arco Design Pro</div>
-    <div class="login-form-sub-title">登录 Arco Design Pro</div>
+    <div class="login-form-title">欢迎登录！</div>
+    <div class="login-form-title">政务一体化协同办公平台</div>
+    <div class="login-form-sub-title">让办公更流畅、高效、安全</div>
     <div class="login-form-error-msg">{{ errorMessage }}</div>
     <a-form
       ref="loginForm"

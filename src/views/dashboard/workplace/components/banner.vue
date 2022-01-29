@@ -37,6 +37,15 @@ export default defineComponent({
   border-radius: 4px 4px 0 0;
 }
 
+.test {
+  width: 32px;
+  height: 100%;
+  color: #fff;
+  background-color: rgb(var(--primary-6));
+  border-top-right-radius: var(--border-radius-small);
+  border-bottom-right-radius: var(--border-radius-small);
+}
+
 :deep(.arco-icon-home) {
   margin-right: 6px;
 }
