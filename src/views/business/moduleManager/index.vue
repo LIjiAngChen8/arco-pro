@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <h1>1111</h1>
+    <Breadcrumb :items="['menu.business', 'menu.business.moduleManager']" />
+    <h1>模块管理</h1>
   </div>
 </template>
 
