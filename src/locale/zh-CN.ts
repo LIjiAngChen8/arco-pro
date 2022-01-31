@@ -1,3 +1,5 @@
+import localeBusiness from '@/views/configuration/business/locale/zh-CN';
+
 import localeSettings from './zh-CN/settings';
 import localeMessageBox from '@/components/message-box/locale/zh-CN';
 
@@ -26,7 +28,8 @@ import localeUserInfo from '@/views/user/info/locale/zh-CN';
 import localeUserSetting from '@/views/user/setting/locale/zh-CN';
 
 export default {
-  'menu.dashboard': '系统配置',
+  'menu.configuration': '系统配置',
+  'menu.dashboard': '控制中心',
   'menu.list': '列表页',
   'menu.result': '结果页',
   'menu.exception': '异常页',
@@ -36,6 +39,7 @@ export default {
   'menu.user': '个人中心',
   'navbar.docs': '文档中心',
   'navbar.action.locale': '切换为中文',
+  ...localeBusiness,
   ...localeSettings,
   ...localeMessageBox,
   ...localeWorkplace,

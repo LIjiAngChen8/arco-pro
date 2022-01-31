@@ -5,6 +5,8 @@
     :auto-open="false"
     :selected-keys="selectedKey"
     :auto-open-selected="true"
+    :accordion="true"
+    :auto-scroll-into-view="true"
     :level-indent="34"
     style="height: 100%"
     @collapse="setCollapse"
@@ -95,6 +97,7 @@ export default defineComponent({
     display: flex;
     align-items: center;
   }
+
   .arco-icon {
     &:not(.arco-icon-down) {
       font-size: 18px;

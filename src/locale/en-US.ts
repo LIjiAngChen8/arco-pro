@@ -1,3 +1,5 @@
+import localeBusiness from '@/views/configuration/business/locale/en-US';
+
 import localeSettings from './en-US/settings';
 import localeMessageBox from '@/components/message-box/locale/en-US';
 
@@ -26,6 +28,7 @@ import localeUserInfo from '@/views/user/info/locale/en-US';
 import localeUserSetting from '@/views/user/setting/locale/en-US';
 
 export default {
+  'menu.configuration': 'System Settings',
   'menu.dashboard': 'Dashboard',
   'menu.list': 'List',
   'menu.result': 'Result',
@@ -36,6 +39,7 @@ export default {
   'menu.user': 'User Center',
   'navbar.docs': 'Docs',
   'navbar.action.locale': 'Switch to English',
+  ...localeBusiness,
   ...localeSettings,
   ...localeMessageBox,
   ...localeWorkplace,

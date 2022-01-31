@@ -6,8 +6,10 @@ import Visualization from './visualization';
 import Result from './result';
 import Exception from './exception';
 import User from './user';
+import Configuration from './configuration';
 
 export default [
+  Configuration,
   Dashboard,
   Visualization,
   List,
