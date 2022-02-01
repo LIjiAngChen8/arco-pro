@@ -4,6 +4,12 @@ import localeModuleManager from '@/views/business/moduleManager/locale/en-US';
 import localeSystemManager from '@/views/business/systemManager/locale/en-US';
 import localeBusinessManager from '@/views/business/businessManager/locale/en-US';
 
+import localeClassManage from '@/views/unifiedUser/classManage/locale/en-US';
+import localeRoleManage from '@/views/unifiedUser/roleManage/locale/en-US';
+import localeLeaderManage from '@/views/unifiedUser/leaderManage/locale/en-US';
+import localeUserManage from '@/views/unifiedUser/userManage/locale/en-US';
+import localeOrgUser from '@/views/unifiedUser/orgUser/locale/en-US';
+
 import localeSettings from './en-US/settings';
 import localeMessageBox from '@/components/message-box/locale/en-US';
 
@@ -13,16 +19,8 @@ import localeMonitor from '@/views/dashboard/monitor/locale/en-US';
 import localeSearchTable from '@/views/list/search-table/locale/en-US';
 import localeCardList from '@/views/list/card/locale/en-US';
 
-import localeStepForm from '@/views/form/step/locale/en-US';
-import localeGroupForm from '@/views/form/group/locale/en-US';
-
-import localeBasicProfile from '@/views/profile/basic/locale/en-US';
-
 import localeDataAnalysis from '@/views/visualization/data-analysis/locale/en-US';
 import localeMultiDAnalysis from '@/views/visualization/multi-dimension-data-analysis/locale/en-US';
-
-import localeSuccess from '@/views/result/success/locale/en-US';
-import localeError from '@/views/result/error/locale/en-US';
 
 import locale403 from '@/views/exception/403/locale/en-US';
 import locale404 from '@/views/exception/404/locale/en-US';
@@ -34,6 +32,7 @@ import localeUserSetting from '@/views/user/setting/locale/en-US';
 export default {
   'menu.globalConfig': 'Global Config',
   'menu.business': 'Business Settings',
+  'menu.unifiedUser': 'Unified User',
   'menu.dashboard': 'Dashboard',
   'menu.list': 'List',
   'menu.result': 'Result',
@@ -48,19 +47,19 @@ export default {
   ...localeModuleManager,
   ...localeSystemManager,
   ...localeBusinessManager,
+  ...localeClassManage,
+  ...localeRoleManage,
+  ...localeLeaderManage,
+  ...localeUserManage,
+  ...localeOrgUser,
   ...localeSettings,
   ...localeMessageBox,
   ...localeWorkplace,
   ...localeMonitor,
   ...localeSearchTable,
   ...localeCardList,
-  ...localeStepForm,
-  ...localeGroupForm,
-  ...localeBasicProfile,
   ...localeDataAnalysis,
   ...localeMultiDAnalysis,
-  ...localeSuccess,
-  ...localeError,
   ...locale403,
   ...locale404,
   ...locale500,

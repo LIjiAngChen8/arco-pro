@@ -23,6 +23,7 @@
     <ul class="right-side">
       <li>
         <a-input-search
+          :model-value="text"
           :style="{ width: '200px', borderRadius: '20px' }"
           placeholder="业务配置"
         />
