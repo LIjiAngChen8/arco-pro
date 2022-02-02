@@ -23,7 +23,6 @@
     <ul class="right-side">
       <li>
         <a-input-search
-          :model-value="text"
           :style="{ width: '200px', borderRadius: '20px' }"
           placeholder="业务配置"
         />
@@ -153,8 +152,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed, ref } from 'vue';
+<script lang="ts" setup>
+import { computed, ref } from 'vue';
 import { useDark, useToggle } from '@vueuse/core';
 import MessageBox from '../message-box/index.vue';
 import { useStore } from '@/store';
@@ -163,70 +162,50 @@ import { LOCALE_OPTIONS } from '@/locale';
 import useLocale from '@/hooks/locale';
 import useUser from '@/hooks/user';
 
-export default defineComponent({
-  components: {
-    MessageBox,
-  },
-  setup() {
-    const store = useStore();
-    const { logout } = useUser();
-    const { avatar } = store.state.user;
-    const { changeLocale } = useLocale();
-    const locales = [...LOCALE_OPTIONS];
-    const theme = computed(() => {
-      return store.state.app.theme;
-    });
-    const isDark = useDark({
-      selector: 'body',
-      attribute: 'arco-theme',
-      valueDark: 'dark',
-      valueLight: 'light',
-      storageKey: 'arco-theme',
-      onChanged(dark: boolean) {
-        // overridded default behavior
-        store.commit(MutationTypes.TOGGLE_THEME, dark);
-      },
-    });
-    const toggleTheme = useToggle(isDark);
-    const setVisible = () => {
-      store.commit(MutationTypes.APP_UPDATE_SETTING, { globalSettings: true });
-    };
-    const refBtn = ref();
-    const triggerBtn = ref();
-    const setPopoverVisible = () => {
-      const event = new MouseEvent('click', {
-        view: window,
-        bubbles: true,
-        cancelable: true,
-      });
-      refBtn.value.dispatchEvent(event);
-    };
-    const handleLogout = () => {
-      logout();
-    };
-    const setDropDownVisible = () => {
-      const event = new MouseEvent('click', {
-        view: window,
-        bubbles: true,
-        cancelable: true,
-      });
-      triggerBtn.value.dispatchEvent(event);
-    };
-    return {
-      locales,
-      theme,
-      avatar,
-      changeLocale,
-      toggleTheme,
-      setVisible,
-      setPopoverVisible,
-      refBtn,
-      triggerBtn,
-      handleLogout,
-      setDropDownVisible,
-    };
+const store = useStore();
+const { logout } = useUser();
+const { avatar } = store.state.user;
+const { changeLocale } = useLocale();
+const locales = [...LOCALE_OPTIONS];
+const theme = computed(() => {
+  return store.state.app.theme;
+});
+const isDark = useDark({
+  selector: 'body',
+  attribute: 'arco-theme',
+  valueDark: 'dark',
+  valueLight: 'light',
+  storageKey: 'arco-theme',
+  onChanged(dark: boolean) {
+    // overridded default behavior
+    store.commit(MutationTypes.TOGGLE_THEME, dark);
   },
 });
+const toggleTheme = useToggle(isDark);
+const setVisible = () => {
+  store.commit(MutationTypes.APP_UPDATE_SETTING, { globalSettings: true });
+};
+const refBtn = ref();
+const triggerBtn = ref();
+const setPopoverVisible = () => {
+  const event = new MouseEvent('click', {
+    view: window,
+    bubbles: true,
+    cancelable: true,
+  });
+  refBtn.value.dispatchEvent(event);
+};
+const handleLogout = () => {
+  logout();
+};
+const setDropDownVisible = () => {
+  const event = new MouseEvent('click', {
+    view: window,
+    bubbles: true,
+    cancelable: true,
+  });
+  triggerBtn.value.dispatchEvent(event);
+};
 </script>
 
 <style scoped lang="less">

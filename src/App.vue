@@ -3,13 +3,6 @@
   <global-setting />
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script lang="ts" setup>
 import GlobalSetting from '@/components/global-setting/index.vue';
-
-export default defineComponent({
-  components: {
-    GlobalSetting,
-  },
-});
 </script>
