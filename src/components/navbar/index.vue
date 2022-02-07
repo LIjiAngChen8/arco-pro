@@ -22,10 +22,28 @@
     </div>
     <ul class="right-side">
       <li>
-        <a-input-search
-          :style="{ width: '200px', borderRadius: '20px' }"
-          placeholder="业务配置"
-        />
+        <a-dropdown
+          :style="{ width: '180px' }"
+          position="bottom"
+          trigger="hover"
+          :popup-visible="dropDownVisible"
+          @select="selectOption"
+        >
+          <a-input-search
+            v-model="inputText"
+            :style="{ width: '200px', borderRadius: '20px' }"
+            placeholder="业务配置"
+            @input="searchInput"
+            @search="search"
+            @press-enter="search"
+          />
+          <template #content>
+            <a-doption v-for="item in autoComplete" :key="item"
+              >{{ item }}
+            </a-doption>
+          </template>
+          <template #empty></template>
+        </a-dropdown>
       </li>
       <li>
         <a-tooltip :content="$t('settings.language')">
@@ -155,6 +173,7 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
 import { useDark, useToggle } from '@vueuse/core';
+import { RouteRecordNormalized, RouteRecordRaw, useRouter } from 'vue-router';
 import MessageBox from '../message-box/index.vue';
 import { useStore } from '@/store';
 import { MutationTypes } from '@/store/modules/app/mutation-types';
@@ -163,6 +182,7 @@ import useLocale from '@/hooks/locale';
 import useUser from '@/hooks/user';
 
 const store = useStore();
+const router = useRouter();
 const { logout } = useUser();
 const { avatar } = store.state.user;
 const { changeLocale } = useLocale();
@@ -185,6 +205,73 @@ const toggleTheme = useToggle(isDark);
 const setVisible = () => {
   store.commit(MutationTypes.APP_UPDATE_SETTING, { globalSettings: true });
 };
+const appRoute = router
+  .getRoutes()
+  .find((el) => el.name === 'root') as RouteRecordNormalized;
+const inputText = ref();
+const dropDownVisible = ref(false);
+const nameList: string[] = [];
+const searchList = [
+  { us: 'classManage', cn: '类别管理' },
+  { us: 'userManage', cn: '用户管理' },
+  { us: 'interfaceScheme', cn: '界面管理' },
+  { us: 'moduleManager', cn: '模块管理' },
+  { us: 'moduleManager', cn: '业务配置' },
+  { us: 'businessManager', cn: '业务管理' },
+  { us: 'systemManager', cn: '系统功能菜单' },
+  { us: 'orgUser', cn: '组织用户' },
+  { us: 'roleManage', cn: '角色管理' },
+  { us: 'leaderManage', cn: '领导管理' },
+  { us: 'workplace', cn: '工作台' },
+  { us: 'monitor', cn: '实时监控' },
+  { us: 'dataAnalysis', cn: '分析页' },
+  { us: 'searchTable', cn: '查询列表' },
+  { us: 'card', cn: '卡片列表' },
+];
+const autoComplete = ref(['']);
+const selectOption = (value: string) => {
+  inputText.value = value;
+  dropDownVisible.value = false;
+};
+function searchInput() {
+  if (inputText.value.length > 0) {
+    autoComplete.value = [];
+    searchList.forEach((e) => {
+      if (e.cn.indexOf(inputText.value) > -1) {
+        dropDownVisible.value = true;
+        autoComplete.value.push(e.cn);
+      }
+    });
+  } else {
+    dropDownVisible.value = false;
+    autoComplete.value = [];
+  }
+}
+function find(data: RouteRecordRaw[], id: string) {
+  // eslint-disable-next-line no-restricted-syntax
+  for (const i of data) {
+    if (i.children) {
+      find(i.children, id);
+    }
+    if (i.name === id) {
+      nameList.push(i.name);
+      break;
+    }
+  }
+}
+function search() {
+  if (inputText.value) {
+    const a = searchList.filter((item) => item.cn === inputText.value);
+    if (a.length === 1) {
+      find(appRoute.children, a[0].us);
+      if (nameList.length > 0) {
+        router.push({
+          name: a[0].us,
+        });
+      }
+    }
+  }
+}
 const refBtn = ref();
 const triggerBtn = ref();
 const setPopoverVisible = () => {

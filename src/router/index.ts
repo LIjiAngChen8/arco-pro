@@ -15,6 +15,11 @@ const router = createRouter({
       path: '/',
       redirect: 'login',
     },
+    {
+      path: '/404',
+      name: '404',
+      component: () => import('@/views/exception/404/index.vue'),
+    },
     Login,
     {
       name: 'root',
@@ -30,6 +35,9 @@ const router = createRouter({
 
 router.beforeEach(async (_to, _from, next) => {
   NProgress.start();
+  if (!_to.name) {
+    router.push('/404');
+  }
   await next();
   NProgress.done();
 });
